@@ -1,0 +1,566 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{enumitem}
+
+\newcommand{\problem}[2]{\noindent \\ \textbf{#1} #2 \\ \hspace{0.75em} \noindent \\}
+\newcommand{\pnum}[1]{\item[\textbf{#1}]}
+% our usual sets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+% topology
+\newcommand{\topo}{\mathcal{T}}
+
+
+\newcommand{\cl}[1]{\overline{#1}}
+\title{Real Analysis Summer Work}
+\author{Sameed Pervaiz}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+	\pnum{2.1} Prove that $(0,1)$ is an open subset of $\R$ but not of $\R^2$.
+	\begin{proof}
+		$(0,1) \equiv B(0.5, 0.5)$ in $\R$, ergo an open set. However, in $\R^2$,
+		every open ball centered on some point in $(0,1)$ contains points with nonzero $y$
+		coordinate, and so the interval is not open.
+	\end{proof}
+
+	\pnum{2.2} For which intervals $[a,b]$ in $\R$ is the intersection $[a,b] \cap \Q$ a clopen subset
+	of $\Q$?
+	\begin{proof}
+		Since $\Q$ is a metric subspace of $\R$, it follows that all the closed sets in $\Q$
+		are intersections of closed sets in $\R$, and similar for open sets. Thus the clopen sets are
+		sets in which $[a,b] \cap \Q = (a,b) \cap \Q$, which happens only when $a,b$ are irrational.
+		Thus $[a,b]$ with $a,b$ irrational are those such intervals.
+	\end{proof}
+
+	\pnum{2.3} Prove directly from the definition of closed set that each single point is a closed
+	subset of a metric space. Why does this imply that a finite set of points is also a closed set?
+	\begin{proof}
+		Let $S=\{x\}$ be a singleton set. Then, only one sequence of points $(x_n)=(x,x,x,x,\cdots)$
+		exists in $S$, with limit $x$, which is contained in the set. Thus $S$ is closed. Since a
+		finite union of closed sets is closed, it follows that any sets containing finitely many
+		points are closed.
+	\end{proof}
+
+	\pnum{2.4} Prove that $S$ clusters at $p$ if and only if, for each $r > 0$, there is a point
+	$q \in M_{r}(p) \cap S$ such that $q \neq p$.
+	\begin{proof}
+	Suppose $S$ clusters at $p$. Then, every neighborhood of $p$ contains infinitely many points of $S$.
+	If a set contains infinitely many points, then it contains at least two distinct points. Since $p$
+	is one of those points, it follows that there exists a distinct point $q\in M_r(p)\cap S$ in every
+	neighborhood of $p$.
+
+	Now suppose that every neighborhood of $p$ contains another distinct point $q$ in $S$. Let
+	$r' = d(p,q)$. Then, it follows that the neighborhood $M_{r'}(p) \cap S$ contains a point distinct
+	from $p$ and $q$. Thus, for any finite set of points, we can find another distinct point closer to
+	$p$, and so the set must be infinite.
+	\end{proof}
+
+	\pnum{2.5} Prove that a set $U \subset M$ is open if and only if none of its points are limits of
+	its complement.
+	\begin{proof}
+	Suppose $U$ is open. Then, $U^c$ is closed and every one of its limits is contained in $U^c$.
+	Since no point in $M$ is in both $U$ and $U^c$, none of $U^c$'s limits lie in $U$.
+
+	Now, suppose none of $U$'s points are limits of its complement. Then, all of the limits of
+	$U^c$ must lie in $U^c$, and $U^c$ is closed. Since the complement of a closed set is open,
+	$U$ is open.
+	\end{proof}
+
+	\pnum{2.6} If $S,T \subset M$, a metric space, and $S \subset T$, prove that
+	\begin{enumerate}[label=\alph*)]
+		\item $\overline{S} \subset \overline{T}$
+	\begin{proof}
+		Since $S \subset T$, every limit of points in $S$ is a limit of points in $T$. Since closure
+		is the union of a set and its limit points, it follows that $\overline{S} \subset \overline{T}$
+	\end{proof}
+		\item int$(S)\subset$int$(T)$
+	\begin{proof}
+		If a point $p$ is in the interior of $S$, then there exists a neighborhood in $S$ that contains
+		$p$. Since $S \subset T$, every neighborhood in $S$ is also a neighborhood in $T$, and so $p$
+		is in the interior of $T$. Thus int$(S)\subset$int$(T)$.
+	\end{proof}
+	\end{enumerate}
+
+	\pnum{2.7} Construct a set with exactly three cluster points.
+	\begin{proof}
+		The set $\{\frac{1}{n} : n \in \N\}$ has a single limit point of 0. If we include three shifted
+		copies of this set, then, it follows that there are three cluster points.
+	\end{proof}
+
+	\pnum{2.8} If $A \subset B \subset C$, $A$ is dense in $B$, $B$ is dense in $C$, prove that
+	$A$ is dense in $C$.
+	\begin{proof}
+		$A$ dense in $B$ means $B \subset \cl{A}$, and $B$ dense in $C$ means $C \subset \cl{B}$.
+		Since closure is idempotent, it follows that $\cl{B} \subset \cl{A}$. Thus $C \subset \cl{A}$,
+		and so $A$ is dense in $C$.
+	\end{proof}
+
+	\pnum{\hl{2.9}} Is the set of dyadic rationals (the denominators are powers of 2) dense in $\Q$?
+	In $\R$? Does one answer imply the other? (Recall that $A$ is dense in $B$ iff $A \subset B$ and
+	$\cl{A} \supset B$.)
+
+	\pnum{2.10}
+	\begin{enumerate}[label=\alph*)]
+		\item Find a metric space in which the boundary of $M_rp$ is not equal to the sphere of radius
+		$r$ at $p$, $\{x\in M:d(x,p) = r\}$.
+		\begin{itemize}
+			\item[] Any metric space with the discrete metric has all sets open, and so the union of
+			open sets contained in a set $A$ is just the union of subsets of $A$, which means
+			$\text{int}(A)=A$. Thus $\partial A = \varnothing$ for every set $A$.
+		\end{itemize}
+		\item Need the boundary be contained in the sphere?
+		\begin{itemize}
+			\item[] Yes, for if there were a boundary point $x$ outside of the n-sphere, then there
+			would exist an $\epsilon$-neighborhood of the point fully outside of $M_rp$, thus making
+			$x$ not a boundary point.
+		\end{itemize}
+	\end{enumerate}
+
+	\pnum{2.11} Let $\topo$ be the collection of open subsets of a metric space $M$, and $\mathcal{K}$
+	the collection of closed subsets. Show that there is a bijection from $\topo$ onto $\mathcal{K}$.
+	\begin{proof}
+		We approach the problem directly by constructing an explicit bijection $f$
+		mapping every open subset $U$ to its complement $M - U$. Suppose that $f(U) = f(V)$
+		for some two open sets $U,V$. Then, $M - U = M - V$. Taking complements again,
+		it follows $U = V$. Thus $f$ is injective.
+
+		Now, for any closed set $V$ in $M$, there exists an open set $M - V$ such that
+		$f(M-V) = M-(M-V) = V$. Thus $f$ is surjective as well, and so bijective, too.
+	\end{proof}
+
+	\pnum{2.12} Let $M$ be a metric space with the discrete metric, or more generally a
+	homeomorph of $M$.
+
+	\begin{enumerate}[label=\alph*)]
+	\item Prove that every subset of $M$ is clopen
+	\begin{proof}
+		Consider an open ball of radius $\epsilon < 1$ centered on some point $x \in M$.
+		Since $d(x,y) = 1$ for all $y\neq x$, it follows that $M_\epsilon(x) = x$.
+			Thus, every set that contains a point $x$ also contains an $\epsilon$-neighborhood of $x$,
+			and so every set is open.
+
+			Now consider any convergent sequence of points $(x_n)$ in a subset of $M$.
+			If a limiting point $p$ exists, it follows that, for any $\epsilon > 0$, there exists
+			$N > 0$ such that $d(x_n,p) < \epsilon$ for all $n > N$. But for any $\epsilon < 1$,
+			$d(x_n, p)< \epsilon$ implies that $x_n = p$.
+
+			Thus, any convergent sequence in a clopen metric space is simply an eventually-constant
+			sequence. From this, it is clear that any convergent sequence of points in a set $U$
+			has a limit in $U$, and so all sets are closed.
+	\end{proof}
+	\item Prove that every function defined on $M$ is continuous.
+			\begin{proof}
+				Since all sets are open (equiv. closed), it follows that any mapping between sets must
+				map open (equiv. closed) sets to open (equiv. closed) sets, and is thus continuous.
+			\end{proof}
+	\item Which sequences converge in $M$?
+			\item[] Any eventually-constant sequence, as proved above.
+	\end{enumerate}
+
+	\pnum{2.13} Show that every subset of $\N$ is clopen. What does this tell you about every
+	function $f : \N \rightarrow M$, where $M$ is a metric space?
+
+	\begin{proof}
+		The proof of clopenness is very similar to that of a metric space endowed with the discrete
+		metric, as $\N$ is a discrete space (all points are isolated), so we won't rewrite it.
+		We can also note that every function on $\N$ is continuous.
+	\end{proof}
+
+	\pnum{\hl{2.14}} The \textbf{distance} from a point $p$ in a metric space $M$ to a non-empty subset
+	$S \subset M$ is defined to be $\text{dist}(p,S) = \text{inf}\{d(p,s) : s \in S\}$
+
+	\begin{enumerate}[label=\alph*)]
+		\item Show that $p$ is a limit of $S$ iff dist$(p,S)=0$.
+			\begin{proof}
+				Suppose $p$ is a limit of some sequence $(x_n)$ of points in $S$. Then, for every
+				$\epsilon > 0$, there exists $N > 0$ such that $d(x_n, p) < \epsilon$ for all $n > N$.
+				Since $d$ is non-negative, 0 is a lower bound for $d(x_n, p)$. Since we can always
+				find an $x_m$ such that $d(x_m, p) < d(x_n, p) < \epsilon$ for any positive $\epsilon$,
+				it follows that 0 is the greatest lower bound.
+
+				Now, suppose the opposite --- that 0 is the greatest lower bound of distances between
+				$p$ and points in $S$. Pick a point $x_1$ such that $d(x_1, p) < 1$. Then, pick another
+				point $x_2$ such that $d(x_2, p) < \frac{1}{2}$. In this way, we can construct a
+				sequence of points $(x_n)$ such that $d(x_n, p) < \frac{1}{n}$ for any $N$. Given
+				any $\epsilon > 0$, then, we can find an $N = \lceil\frac{1}{\epsilon}\rceil$ such that
+				$d(x_n, p) < \epsilon$ for all $n > N$, and the converse holds.
+			\end{proof}
+		\item Show that $p\mapsto \text{dist}(p,S)$ is a uniformly continuous function of $p \in M$.
+			\begin{proof}
+				Define a function $f : M \rightarrow \R$ such that $f(p) = $dist$(p,S)$. Uniform
+				continuity requires that, for every $\epsilon > 0$, there exists $\delta > 0$ such
+				that $d(p,q) < \delta$ implies $d(f(p),f(q)) < \epsilon$. 
+
+				Suppose $d(f(p),f(q)) < \epsilon$. It follows that
+				\begin{align}
+					|dist(p,S) - dist(q,S)| &= |\text{inf}(\{d(p, s_n)\} - \text{inf}(\{d(q, s_n)\}| \\
+											&< \epsilon 
+				\end{align}
+				But the infimum of a difference is less than the difference of the infima, so
+			\end{proof}
+	\end{enumerate}
+
+	\pnum{2.15} What is the set of points in $\R^3$ at distance $1/2$ from the unit circle in the plane?
+	\begin{itemize}
+		\item[] It's a torus with inner radius 0, and outer radius 1.
+	\end{itemize}
+
+	\pnum{2.16} Show that $S \subset M$ is somewhere dense in $M$ iff int$(\overline{S}) \neq \varnothing$.
+	That is, $S$ is nowhere dense in $M$ if and only if its closure has empty interior.
+	
+	\begin{proof}
+		Suppose the closure of $S$ has empty interior. Since the interior of a set is the union of all
+		open subsets of the set, it follows that the empty set is the only open set contained in the closure
+		of $S$, and thus $S$ itself. Thus the intersection with any open set $U \subset M$ is empty, so
+		there exists no open non-empty sets $U$ such that $\overline{S \cap U} \supset U$.
+	\end{proof}
+
+	\pnum{\hl{2.17}} Assume that $f : M \to N$ is a function from one metric space to another which satisfies
+	the following condition: if a sequence $(p_n)$ in $M$ converges then the sequence $(f(p_n))$ in $N$
+	converges. Prove that $f$ is continuous.
+
+	\begin{proof}
+		If, for every $\epsilon > 0$ there exists $N > 0$ such that for all $n > N$, $d(p_n, p) < \epsilon$,
+		then for every positive $\epsilon$ there exists $M$ such that $m > M$ implies $d(f(p_n),
+		f(p)) < \epsilon$.
+	\end{proof}
+
+	\pnum{2.18} The simplest type of mapping from one metric space to another is an \textbf{isometry}.
+	It is a bijection $f : M \to N$ that preserves distance in the sense that for all $p, q \in M$,
+	\begin{align}
+		d_{N}(fp, fq) = d_M (p,q)
+	\end{align}
+	If there exists an isometry from $M$ to $N$ then $M$ and $N$ are said to be isometric, $M \equiv N$.
+	You might have two copies of a unit equilateral triangle, one centered at the origin and one centered
+	elsewhere. They are isometric. Isometric metric spaces are indistinguishable as metric space.
+
+	\begin{enumerate}[label=\alph*)]
+		\item Prove that every isometry is continuous.
+			\begin{proof}
+				Since $d(fp, fq) = d(p, q)$, it follows $\delta = \epsilon$ guarantees continuity for any
+				$p,q \in N$. Indeed, isometries are even uniformly continuous!
+			\end{proof}
+		\item Prove that every isometry is a homeomorphism.
+			\begin{proof}
+				Recall that homeomorphisms are continuous bijections with continuous inverses. Since $f$ is a
+				continuous bijection, we just have to prove the inverse is continuous. Since $(f^{-1}fp,f^{-1}fq)
+				= (p,q)$, it follows $d(f^{-1}fp, f^{-1}fq) = d(p,q) = d(fp, fq) = d(f^{-1}fp,d^{-1}fq)$.
+				This means the inverse is also an isometry, and is thus continuous, and every isometry is a
+				homeomorphism.
+			\end{proof}
+		\item Prove that [0,1] is not isometric to [0,2].
+			\begin{proof}
+				Not sure if this is obvious or not; are we assuming a choice of metric?
+			\end{proof}
+	\end{enumerate}
+
+	\pnum{2.19} Prove that isometry is an equivalence relation: if $M$ is isometric to $N$, show that $N$
+	is isometric to $M$; show that any $M$ is isometric to itself (what mapping of $M$ to $M$ is an
+	isometry?); if $M$ is isometric to $N$ and $N$ is isometric to $P$, show that $M$ is isometric to $P$.
+	
+	\begin{proof}
+		Easy. We showed that the inverse of an isometry is an isometry, thus $N$ is isometric to $M$.
+		The identity map is trivially an isometry, so every $M$ is isometric to itself. Lastly, since
+		the composition of bijections is bijective, given two isometries $f : M \to N$, $g : N \to P$,
+		it follows that
+		\begin{align}
+			d(fp, fq) &= d(p,q) \\
+			d(gfp, gfq) &= d(fp, fq) \\
+									&= d(p,q)
+		\end{align}
+		and so the composition of $f$ and $g$ is also an isometry.
+	\end{proof}
+
+	\pnum{\hl{2.20}} Is the perimeter of the square isometric to the circle? Homeomorphic?
+
+	\pnum{\hl{2.21}} Which capital letters of the Roman alphabet are homeomorphic? Are any isometric?
+	Explain.
+
+	\pnum{2.22} Is $\R$ homeomorphic to $\Q$? Explain.
+
+	No; $\Q$ is disconnected, while $\R$ is connected, and so they cannot be homeomorphic.
+
+	\pnum{2.23} Is $\Q$ homeomorphic to $\N$? Explain.
+
+	No, if a continuous bijection from $\Q$ to $\N$ existed, then every open set in $\N$ has an open
+	preimage, and every closed set in $\N$ has a closed preimage. But since every set in $\N$ is clopen,
+	the preimage of every set would have to be clopen. So take a singleton set in $\N$. Under a bijective
+	map to $\Q$, it has a singleton preimage. But no singleton in $\Q$ is open, and so no homeo can exist.
+
+	\pnum{\hl{2.24}} An ant walks on the floor, walls, and ceiling of a cubical room. What metric is
+	natural	for the ant's view of the world? What metric would a spider consider natural? If the ant wants
+	to walk	from a point $p$ to a point $q$, how could it determine the shortest path?
+
+	\pnum{2.25} Assume that $N$ is an open metric subspace of $M$ and that $U \subset N$.
+	\begin{enumerate}[label=\alph*)]
+		\item Prove that $U$ is open in $N$ if and only if it is open in $M$.
+			\begin{itemize}
+				\item[] \begin{proof}
+						If $U$ is open in $N$, then it is open in $M$, as every neighborhood of a point in $N$
+						is a neighborhood of a point in $M$. Conversely, if $U$ is open in $M$, then there exists
+						an open neighborhood around every point in $U$. Since $U$ is a subset of $N$, which is open,
+						these neighborhoods can exist inside $N$, and thus $U$ is open in $N$.
+					\end{proof}
+			\end{itemize}
+		\item Conversely, prove that if openness of $S \subset N$ is equivalent to openness in $M$, then
+			$N$ is open in $M$.
+			\begin{itemize}
+				\item[] \begin{proof}
+						If $S$ being open in $N$ is equivalent to being open in $M$, then $N$ being open in itself
+						implies it is open in $M$ as well.
+				\end{proof}
+			\end{itemize}
+
+		\item Do the same for closedness.
+			\begin{itemize}
+				\item[] \begin{proof}
+						Assume $N$ is a closed metric subspace of $M$, and that $U \subset N$. Then if $U$ is closed
+						in $N$, all its limits are contained in $U$, which is also contained in $M$, and so it is
+						closed in $M$. Conversely, if $U$ is closed in $M$, and is a subset of $N$, then it is also
+						closed in $M$, as its limits are still inside of itself. We can also similarly say that if
+						closedness is equivalent in $M$ and $N$, then $N$ being closed in itself means $N$ is closed
+						in $M$.
+					\end{proof}
+			\end{itemize}
+		\item Deduce that a clopen metric subspace $N$ is the only example in which the concepts of openness
+			and closedness in the subspace agree exactly with the concepts in the big space.
+			\begin{itemize}
+				\item[] Kinda trivial. If closedness and openness are both in agreement, then $N$ must be closed
+					and open simultaneously.
+			\end{itemize}
+	\end{enumerate}
+
+	\pnum{2.26} Consider a sequence $(x_n)$ in the metric space $\R$.
+	\begin{enumerate}[label=\alph*)]
+		\item If $(x_n)$ converges in $\R$, prove that the sequence of absolute values $(|x_n|)$ converges
+			in $\R$.
+			\begin{proof}
+				Follows from the reverse triangle inequality and the convergence of $(x_n)$.
+			\end{proof}
+		\item Prove or disprove the converse.
+			It's false; take $(x_n)$ to be given by $(-1)^n \left( \frac{1}{n} + 1\right)$. The absolute 
+			value sequence converges to 1, but the regular sequence alternates between $-1$ and $1$.
+	\end{enumerate}
+	\pnum{2.27} Let $(A_n)$ be a nested decreasing sequence of non-empty closed sets in the metric space
+	$M$.
+	\begin{enumerate}[label=\alph*)]
+		\item If $M$ is complete and diam $A_n \to 0$ as $n \to \infty$, show that $\cap A_n$ is exactly
+			one point.
+		\item To what assertions do the sets $[n,\infty)$ provide counterexamples?
+	\end{enumerate}
+
+	\pnum{2.28} Prove that there is an embedding of hte line as a closed usbset of the plane, and there is
+	and embedding of the line as a bounded subset of the plane, but there is no embedding of the line as
+	a closed and bounded subset of the plane.
+
+	\pnum{2.29}
+	\begin{enumerate}[label=\alph*)]
+		\item Prove that every convergent sequence is bounded. That is, if $(p_n)$ converges in the metric
+			space $M$, prove that there is some neighborhood $M_r q$ containing hte set $\{p_n : n \in \N\}$.
+		\item Is the same true for a Cauchy sequence in an incomplete metric space?
+	\end{enumerate}
+
+	\pnum{2.30} A sequence $(x_n)$ in $\R$ \textbf{increases} if $n < m$ implies $x_n \leq x_m$. It
+	\textbf{strictly increases} if $n < m$ implies $x_n < x_m$. The same holds for decreasing. A sequence
+	is \textbf{monotone} if it increases or decreases.
+	\begin{enumerate}[label=\alph*)]
+		\item Prove that every sequence in $\R$ which is monotone and bounded converges in $\R$.
+		\item Prove that this monotone sequence condition is equivalent to the least upper bound proprerty.
+	\end{enumerate}
+
+	\pnum{2.31} Let $(x_n)$ be a sequence in $\R$.
+	\begin{enumerate}
+		\item[*a$)$] Prove that $(x_n)$ has a monotone subsequence.
+		\item[b$)$] How can you deduce that any bounded sequence in $\R$ has a convergent subsequence? 
+	\end{enumerate}
+
+	\pnum{2.32} Let $p_n$ be a sequence anf $f : \N \to \N$ a bijection. The sequence $(q_k)$ for $k \in \N$ with $q_k = p_{f k}$ is a \textbf{rearrangement} of $p_n$.
+	\begin{enumerate}[label=\alph*)]
+		\item Are limits of a sequence unaffected byu rearrangement?
+		\item What if $f$ is an injection?
+		\item A surjection?
+	\end{enumerate}
+
+	\pnum{2.33} If $f : A \to B$ and $g : C \to B$ such that $A \subset C$ and for each $a \in A, f(a) = g(a)$ then $f$ extends to $g$. Assume that $f : S \to \R$ is a uniformly continuous function defined on a subset $S$ of a metric space $M$.
+	\begin{enumerate}[label=\alph*)]
+		\item Prove that $f$ extends to a uniformly continuous function $\overline{f} : \overline{S} \to \R$
+		\item Prove that $\overline{f}$ is the unique continuous function defined on $\overline{S}$ such that $\overline{f}(x) = f(x)$ for all $x \in S$.
+		\item Prove the same things when $N$ is a complete metric space and $f : S \to N$.
+	\end{enumerate}
+
+	\pnum{2.34} A map $f : M \to N$ is open if for each open set $U \subset M$, the image set $f(U)$ is open in $N$
+	\begin{enumerate}[label=\alph*)]
+		\item Does open imply continuous?
+		\item Does homeo imply open?
+		\item Are open continuous bijections homeos?
+		\item If $f : \R \to \R$ is a continuous surjection, is it open?
+		\item If $f : \R \to \R$ is a continuous open surjection, is it a homeo?
+		\item What happens in $(e)$ if $\R$ is replaced by the unit circle $S$?
+
+	\pnum{2.35} Fold a piece of paper in half.
+	\begin{enumerate}[\label=\alph*)]
+		\item Is this a continuous transformation of one rectangle into another?
+		\item Is it injective?
+		\item Draw an open set in the target rectangle, and find its preimage in the original rectangle.
+			Is it open?
+		\item What if hte open set meets the crease?
+		
+			The baker's transformation is a similar mapping. A rectangle of dough is stretched to twice its
+			length and then folded back on itswelf. Is the transformation continuous? A formula for the
+			transformation in one variable is $f(x) = 1 - |1-2x|$. The $n$-th iteration of $f$ is its $n-fold$
+			composition. The orbit of a point is the set of iterated images.
+		\item If x is rational prove that the orbit of $x$ is a finite set.
+		\item If $x$ is irrational what is hte orbit?
+	\end{enumerate}
+
+	\pnum{2.36}
+
+	\pnum{2.37}
+
+	\pnum{2.38}
+
+	\pnum{2.39}
+
+	\pnum{2.40}
+
+	\pnum{2.41}
+
+	\pnum{2.42}
+
+	\pnum{2.43}
+
+	\pnum{2.44}
+
+	\pnum{2.45}
+
+	\pnum{2.46}
+
+	\pnum{2.47}
+
+	\pnum{2.48}
+
+	\pnum{2.49}
+
+	\pnum{2.50}
+
+	\pnum{2.51}
+
+	\pnum{2.52}
+
+	\pnum{2.53}
+
+	\pnum{2.54}
+
+	\pnum{2.55}
+
+	\pnum{2.56}
+
+	\pnum{2.57}
+
+	\pnum{2.58}
+
+	\pnum{2.59}
+
+	\pnum{2.60}
+
+	\pnum{2.61}
+
+	\pnum{2.62}
+
+	\pnum{2.63}
+
+	\pnum{2.64}
+
+	\pnum{2.65}
+
+	\pnum{2.66}
+
+	\pnum{2.67}
+
+	\pnum{2.68}
+
+	\pnum{2.69}
+
+	\pnum{2.70}
+
+	\pnum{2.71}
+
+	\pnum{2.72}
+
+	\pnum{2.73}
+
+	\pnum{2.74}
+
+	\pnum{2.75}
+
+	\pnum{2.76}
+
+	\pnum{2.77}
+
+	\pnum{2.78}
+
+	\pnum{2.79}
+
+	\pnum{2.80}
+
+	\pnum{2.81}
+
+	\pnum{2.82}
+
+	\pnum{2.83}
+
+	\pnum{2.84}
+
+	\pnum{2.85}
+
+	\pnum{2.86}
+
+	\pnum{2.87}
+
+	\pnum{2.88}
+
+	\pnum{2.89}
+
+	\pnum{2.90}
+
+	\pnum{2.91}
+
+	\pnum{2.92}
+
+	\pnum{2.93}
+
+	\pnum{2.94}
+
+	\pnum{2.95}
+
+	\pnum{2.96}
+
+	\pnum{2.97}
+
+	\pnum{2.98}
+
+
+
+\end{itemize}
+
+
+\end{document}
