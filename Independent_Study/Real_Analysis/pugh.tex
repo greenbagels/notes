@@ -357,25 +357,36 @@
 				Follows from the reverse triangle inequality and the convergence of $(x_n)$.
 			\end{proof}
 		\item Prove or disprove the converse.
+
 			It's false; take $(x_n)$ to be given by $(-1)^n \left( \frac{1}{n} + 1\right)$. The absolute 
 			value sequence converges to 1, but the regular sequence alternates between $-1$ and $1$.
 	\end{enumerate}
+
 	\pnum{2.27} Let $(A_n)$ be a nested decreasing sequence of non-empty closed sets in the metric space
 	$M$.
 	\begin{enumerate}[label=\alph*)]
-		\item If $M$ is complete and diam $A_n \to 0$ as $n \to \infty$, show that $\cap A_n$ is exactly
+		\item If $M$ is complete and diam$(A_n) \to 0$ as $n \to \infty$, show that $\cap A_n$ is exactly
 			one point.
+
+			\begin{proof}
+			The infinite intersection of $(A_n)$ is composed of points that are in each set $A_n$. Suppose
+			that more than one point exists in this intersection. Then these points exist in every set, at
+			a nonzero distance apart. Thus the diameter is nonzero, as any upper bound must be nonzero, a
+			contradiction.
+
+			Now, we'll prove 
+			\end{proof}
 		\item To what assertions do the sets $[n,\infty)$ provide counterexamples?
 	\end{enumerate}
 
-	\pnum{2.28} Prove that there is an embedding of hte line as a closed usbset of the plane, and there is
+	\pnum{2.28} Prove that there is an embedding of the line as a closed usbset of the plane, and there is
 	and embedding of the line as a bounded subset of the plane, but there is no embedding of the line as
 	a closed and bounded subset of the plane.
 
 	\pnum{2.29}
 	\begin{enumerate}[label=\alph*)]
 		\item Prove that every convergent sequence is bounded. That is, if $(p_n)$ converges in the metric
-			space $M$, prove that there is some neighborhood $M_r q$ containing hte set $\{p_n : n \in \N\}$.
+			space $M$, prove that there is some neighborhood $M_r q$ containing the set $\{p_n : n \in \N\}$.
 		\item Is the same true for a Cauchy sequence in an incomplete metric space?
 	\end{enumerate}
 
@@ -393,21 +404,26 @@
 		\item[b$)$] How can you deduce that any bounded sequence in $\R$ has a convergent subsequence? 
 	\end{enumerate}
 
-	\pnum{2.32} Let $p_n$ be a sequence anf $f : \N \to \N$ a bijection. The sequence $(q_k)$ for $k \in \N$ with $q_k = p_{f k}$ is a \textbf{rearrangement} of $p_n$.
+	\pnum{2.32} Let $p_n$ be a sequence anf $f : \N \to \N$ a bijection. The sequence $(q_k)$ for
+	$k \in \N$ with $q_k = p_{f k}$ is a \textbf{rearrangement} of $p_n$.
 	\begin{enumerate}[label=\alph*)]
 		\item Are limits of a sequence unaffected byu rearrangement?
 		\item What if $f$ is an injection?
 		\item A surjection?
 	\end{enumerate}
 
-	\pnum{2.33} If $f : A \to B$ and $g : C \to B$ such that $A \subset C$ and for each $a \in A, f(a) = g(a)$ then $f$ extends to $g$. Assume that $f : S \to \R$ is a uniformly continuous function defined on a subset $S$ of a metric space $M$.
+	\pnum{2.33} If $f : A \to B$ and $g : C \to B$ such that $A \subset C$ and for each $a \in A,
+	f(a) = g(a)$ then $f$ extends to $g$. Assume that $f : S \to \R$ is a uniformly continuous function
+	defined on a subset $S$ of a metric space $M$.
 	\begin{enumerate}[label=\alph*)]
 		\item Prove that $f$ extends to a uniformly continuous function $\overline{f} : \overline{S} \to \R$
-		\item Prove that $\overline{f}$ is the unique continuous function defined on $\overline{S}$ such that $\overline{f}(x) = f(x)$ for all $x \in S$.
+		\item Prove that $\overline{f}$ is the unique continuous function defined on $\overline{S}$
+			such that $\overline{f}(x) = f(x)$ for all $x \in S$.
 		\item Prove the same things when $N$ is a complete metric space and $f : S \to N$.
 	\end{enumerate}
 
-	\pnum{2.34} A map $f : M \to N$ is open if for each open set $U \subset M$, the image set $f(U)$ is open in $N$
+	\pnum{2.34} A map $f : M \to N$ is open if for each open set $U \subset M$, the image set $f(U)$
+	is open in $N$
 	\begin{enumerate}[label=\alph*)]
 		\item Does open imply continuous?
 		\item Does homeo imply open?
@@ -415,24 +431,30 @@
 		\item If $f : \R \to \R$ is a continuous surjection, is it open?
 		\item If $f : \R \to \R$ is a continuous open surjection, is it a homeo?
 		\item What happens in $(e)$ if $\R$ is replaced by the unit circle $S$?
+	\end{enumerate}
 
 	\pnum{2.35} Fold a piece of paper in half.
-	\begin{enumerate}[\label=\alph*)]
+	\begin{enumerate}[label=\alph*)]
 		\item Is this a continuous transformation of one rectangle into another?
 		\item Is it injective?
 		\item Draw an open set in the target rectangle, and find its preimage in the original rectangle.
 			Is it open?
-		\item What if hte open set meets the crease?
+		\item What if the open set meets the crease?
 		
 			The baker's transformation is a similar mapping. A rectangle of dough is stretched to twice its
 			length and then folded back on itswelf. Is the transformation continuous? A formula for the
-			transformation in one variable is $f(x) = 1 - |1-2x|$. The $n$-th iteration of $f$ is its $n-fold$
+			transformation in one variable is $f(x) = 1 - |1-2x|$. The $n$-th iteration of $f$ is its $n$-fold
 			composition. The orbit of a point is the set of iterated images.
 		\item If x is rational prove that the orbit of $x$ is a finite set.
-		\item If $x$ is irrational what is hte orbit?
+		\item If $x$ is irrational what is the orbit?
 	\end{enumerate}
 
-	\pnum{2.36}
+	\pnum{2.36} Rotate the unit circle $C$ by a fixed angle $\alpha$, say $R : C \to C$. (In polar coor
+	dinates, the transformation $R$ sends $(1,\theta)$ to $(1,\theta + \alpha)$.)
+	\begin{enumerate}[label=\alph*)]
+		\item If $\alpha/\pi$ is rational, show that each orbit of $R$ is a finite set.
+		\item[*b$)$] If $\alpha / \pi$ is irrational, show that each orbit is infinite and has closure $=C$.
+	\end{enumerate}
 
 	\pnum{2.37}
 
