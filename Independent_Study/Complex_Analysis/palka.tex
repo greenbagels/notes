@@ -1,0 +1,273 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\problem}[2]{\noindent \\ \textbf{#1} #2 \\ \hspace{0.75em} \noindent \\}
+\newcommand{\pnum}[1]{\item[\textbf{#1}]}
+\newcommand{\Arg}{\,\text{Arg}\,}
+\newcommand{\Log}{\,\text{Log}\,}
+\newcommand{\Arctan}{\text{Arctan }}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\renewcommand{\Im}{\text{Im}\,}
+\renewcommand{\Re}{\text{Re}\,}
+
+\title{Complex Analysis Summer Work}
+\author{Sameed Pervaiz}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Chapter I: The Complex Number System}
+
+\begin{enumerate}[label={\bfseries I.4.\arabic*}]
+	\item If $z=1+2i$ and $w=3+4i$, express the following in the form $x+iy$:
+	\begin{enumerate}
+		\item $3z+iw = 3(1+2i) + i(3+4i) = -1 + 9i$ \\
+		\item $2z^2-z\overline{w} = 2(1+2i)^2 - (1+2i)(3-4i) = -17 + 6i$ \\
+	\end{enumerate}
+	
+	The rest of this is kinda useless so...
+
+	% TODO: Fix indentation.
+
+	\item Verify that $\overline{z+w} = \overline{z} + \overline{w}$, $\overline{zw} =
+	\overline{z}\overline{w}$, and $|zw|=|z||w|$ for all complex numbers $z$ and $w$. Assuming that
+	$w \neq 0$, show also that $\overline{z/w}=\overline{z}/\overline{w}$ and $|z/w|=|z|/|w|$.
+
+	These are also trivial to prove...
+
+	\item Confirm that the identity $1+z+\cdots+z^n = (1-z^{n+1})/(1-z)$ holds for every non-negative
+	integer $n$ and every complex number $z$, save for $z=1$.
+
+	\begin{proof}
+		Take $z$ to be a complex number. Then, we prove the base case, $n=0:$
+		\begin{align}
+			1 &= (1-z)/(1-z) \\
+			1 &= 1
+		\end{align}
+		Now, assume the case $n=n$, and prove the $n+1$ case:
+		\begin{align}
+			1 + z + \cdots + z^n &= (1-z^{n+1})/(1-z) \\
+			1 + z + \cdots + z^{n-1} &= (1-z^{n+1} + z^{n+1}(1-z))/(1-z) \\
+			&= (1-z^{(n+1)+1})/(1-z)
+		\end{align}
+	\end{proof}
+
+	\item Establish the parallelogram law for complex numbers $z,w$: $|z+w|^2 + |z-w|^2 = 2|z|^2 + 2|w|^2$
+	\begin{align}
+    |z+w|^2 + |z-w|^2 &= (a+c)^2 + (b+d)^2 + (a-c)^2 + (b-d)^2 \\
+    &= a^2 + 2ac + c^2 + b^2 + 2bd + d^2 + a^2 -2ac + c^2 + b^2 -2bd + d^2 \\
+    &= 2(a^2 + c^2) +2(b^2 + d^2) \\
+    &= 2|z|^2 + 2|w|^2
+	\end{align}
+
+	\item Given nonzero $w,z$, prove that $|z+w|=|z|+|w|$ is true iff $|w=tz|$ for some positive $t$.
+	\begin{align}
+    \sqrt{(a+c)^2+(b+d)^2} &= \sqrt{a^2+b^2} + \sqrt{c^2 + d^2} \\
+    (a+c)^2 + (b+d)^2 &= a^2 + b^2 + c^2 + d^2 + 2\sqrt{(a^2+b^2)(c^2+d^2)} \\
+    ac + bd &= \sqrt{a^2c^2 +b^2c^2 + a^2d^2 + b^2d^2} \\
+    a^2c^2 + b^2d^2 + 2acbd &= a^2c^2 + b^2c^2 + a^2d^2 + b^2d^2 \\
+    2adbc &= b^2c^2 + a^2d^2 \\
+    0 &= a^2d^2 - 2adbc + b^2c^2 \\
+    &= (ad-bc)^2 \\
+    ad &= bc \\
+    \frac{a}{c} &= \frac{b}{d} = t \\
+    \implies a = ct &\land b=dt \\
+    \implies a+bi &= t(c+di) \\
+    \implies z &= t(w)
+	\end{align}
+\end{enumerate}
+
+\section*{Chapter 2: Rudiments of Plane Topology}
+
+\begin{enumerate}[label={\bfseries II.5.\arabic*}]
+	\item  Verify that $\Delta(z_0, r)$ is an open set and that $\overline{\Delta}(z_0,r)$ is a
+	closed set.
+	
+	\begin{proof}
+		A given point $z$ in $\Delta \equiv \Delta(z_0, r)$ exists on the radius of the open disk. Thus,
+		we can explicitly construct an open disk $\Delta(z, r-|z_0-r|)$ which lies completely in $\Delta$.
+
+		For any closed disk $\overline{\Delta} \equiv \overline{\Delta}(z_0, r)$, we have that its complement
+		$\C - \overline{\Delta}$ is the plane minus the closed disk. Thus any point $z$ in the complement
+		exists on a line segment of radius $|z-z_0|$ connecting $z$ and $z_0$. We can then similarly
+		construct an open disk of radius $|z-z_0|-r$ centered on $z$,	and thus $\overline\Delta$ is closed.
+	\end{proof}
+
+	\item Prove Theorems 1.1 and 1.2.
+		\begin{enumerate}[label={\bfseries Theorem 1.\arabic*}]
+			\item The collection of open subsets of $\C$ is closed under unions and finite intersections.
+			\begin{proof}
+				Given $V \equiv \cup U_i$, take any point $p \in V$. It follows that $p$ is an element of at
+				least one $U_i$, which is an open set. There then exists an open disk centered on $p$ in $U_i$,
+				and therefore in $V$ as well. Thus $V$ is open.
+
+				Now, take $V \equiv \cap U_i$, where the index set is finite. Provided the intersection is
+				nonempty, a given point $p \in V$ must be an element of every $U_i$. Hence there is a set of
+				open disks $\Delta_i$ each centered on $p$, and contained fully in $U_i$. Take the minimum
+				radius min$(\{r_i\})$. Then the open disk of this radius is contained in each $U_i$, and as
+				such, $V$. Thus $V$ is open.
+			\end{proof}
+
+			\item The collection of closed subsets of $\C$ is closed under intersections and finite unions.
+			\begin{proof}
+				De Morgan's laws allow us to equate the arbitrary intersection of closed sets in $\C$, and
+				equate it to the arbitrary union of each set's complements, which we know to be open. Taking
+				another complement, it follows that closed sets are closed under arbitrary intersections.
+
+				On the other hand, suppose we have a finite union of closed sets. By the same argument, the
+				complement is a finite intersection of open sets. Since this is open, the complement is closed,
+				and so closed subsets are closed under finite unions.
+			\end{proof}
+		\end{enumerate}
+
+	\item Classify each of the following sets as open, closed, or neither open nor closed:
+	(\textit{Hint}. At least for (i)-(v) it may help to view hte set graphically.)
+
+	\begin{enumerate}[label=(\roman*)]
+		\item $A = \{z : -\pi < \Im z \leq \pi \}$
+			\begin{enumerate}
+				\item[] Half-open infinite strip between $y=-\pi$ and $y=\pi$: neither.
+			\end{enumerate}
+		\item $B = \{ z : 1 < |z| < 2\}$
+			\begin{enumerate}
+				\item[] Torus of inner radius 1, outer radius 2: open.
+			\end{enumerate}
+		\item $C = \{ z : |\Re z| + |\Im z| \leq 1\}$
+			\begin{enumerate}
+				\item[] Unit disk under the 1-norm: closed
+			\end{enumerate}
+		\item $D = \{ : 0 < \max\{x,y\} \leq 1\}$
+			\begin{enumerate}
+				\item[] Punctured unit disk under the taxicab metric: neither.
+			\end{enumerate}
+		\item $E = \{z : y > x^2 \}$
+			\begin{enumerate}
+				\item[] Subset of the plane above the parabola $y=x^2$: open.
+			\end{enumerate}
+		\item $F = \{z : \Re z \text{ and } \Im z \text{ are rational}\}$
+			\begin{enumerate}
+				\item[] Neither. No open ball contains only rationals, and rationals can have
+				irrational limits.
+			\end{enumerate}
+	\end{enumerate}
+
+	\item Determine the boundary, closure, and interior of each of the sets listed in Exercise 5.3
+
+	\begin{enumerate}[label=(\roman*)]
+		\item $A = \{z : -\pi < \Im z \leq \pi \}$
+			\begin{enumerate}
+				\item[] Boundary: horizontal lines at $\pm\pi$
+				\item[] Closure: the closed horizontal strip.
+				\item[] Interior: the fully open horizontal strip.
+			\end{enumerate}
+		\item $B = \{ z : 1 < |z| < 2\}$
+			\begin{enumerate}
+				\item[] Boundary: Circles of radius 1 and 2 centered on 0.
+				\item[] Closure: Closed torus.
+				\item[] Interior: Same as the set.
+			\end{enumerate}
+		\item $C = \{ z : |\Re z| + |\Im z| \leq 1\}$
+			\begin{enumerate}
+				\item[] Boundary: Symmetric reflection of $y=1-x$ in each quadrant.
+				\item[] Closure: Same as set.
+				\item[] Interior: Same as set, minus boundary.
+			\end{enumerate}
+		\item $D = \{ : 0 < \max\{x,y\} \leq 1\}$
+			\begin{enumerate}
+				\item[] Boundary: Origin plus unit square.
+				\item[] Closure: Closed unit square.
+				\item[] Interior: Same as the set, minus unit square.
+			\end{enumerate}
+		\item $E = \{z : y > x^2 \}$
+			\begin{enumerate}
+				\item[] Boundary: Parabola $y=x^2$.
+				\item[] Closure: Subset of the plane including parabola and above..
+				\item[] Interior: Same as the set.
+			\end{enumerate}
+		\item $F = \{z : \Re z \text{ and } \Im z \text{ are rational}\}$
+			\begin{enumerate}
+				\item[] Boundary: The plane.
+				\item[] Closure: The plane.
+				\item[] Interior: Empty.
+			\end{enumerate}
+	\end{enumerate}
+
+	\item Prove Theorem 1.3.
+		\begin{enumerate}
+			\item[\textbf{Theorem 1.3.}] \emph{The boundary $\partial A$ and closure $\overline A$ of a
+			subset $A$ of $\C$ are closed sets}.
+			\begin{proof}
+				A point $z$ in the boundary $\partial A$ is such that, for any positive $r$, $\Delta(z, r)$
+				has non-empty intersection with both $A$ and $\C - A$. It follows, then, that any point $z'$
+				in the complement $\C - \partial A$ is such that, for \emph{some} $r > 0$, $\Delta(z', r)$
+				has empty intersection with either $A$ or $\C - A$. Since, for any $z_0$ in	the disk about $z'$,
+				the smaller disk $\Delta(z_0, r-|z'-z_0|)$ is a subset of $\Delta(z',r)$, it follows that every
+				element of $\Delta(z', r)$ is an element of $\C - \partial A$, and so any arbitrary point in
+				the complement is an interior point. Hence the complement is open, and $\partial A$ is closed.
+
+				Suppose a point $z$ is in the closure $\overline A = A \cup \partial A$. Then, for every $r > 0$,
+				$A \cap \Delta(z, r)$ is non-empty. But then, any point $z'$ in the complement $\C-\overline A$
+				is such that, for some $r > 0$, $A \cap \Delta(z', r)$ is empty. Thus, for any such point $z'$,
+				the disk $\Delta(z',r)$ exists entirely in $\C - \partial A$, and so $\C - \partial A$ is open.
+				Taking a complement again, it follows that $\partial A$ is closed.
+			\end{proof}
+	\end{enumerate}
+
+	\item Compute the limit of $(z_n)$ when
+	\begin{enumerate}[label=(\roman*)]
+		\item $z_n = i^{n!} + 2^{-n}$
+			\begin{itemize}
+				\item[] Divergent, since $2^{-n}$ converges to 0, but the $i$ term oscillates.
+			\end{itemize}
+		\item $z_n = (in^3 + 1)/(2n^3+n^2)$
+			\begin{itemize}
+				\item[] Converges to $\frac{i}{2}$.
+			\end{itemize}
+		\item $z_n = 2^{-n + i\sqrt{n}}$
+			\begin{itemize}
+				\item[] Converges to 0.
+			\end{itemize}
+		\item $z_n = \sqrt[n]{z}$
+			\begin{itemize}
+				\item[] Converges to 0.
+			\end{itemize}
+		\item $z_n = \sqrt[n]{n}$
+			\begin{itemize}
+				\item[] Take the log, and then exponentiate. $\lim z_n = \lim \exp [(\log n)/n]=1$. 
+			\end{itemize}
+		\item $z_n = (1+n^{-1})^n + i(1-n^{-1})^n$
+			\begin{itemize}
+				\item[] Converges to $e + i\frac{1}{e}$.
+			\end{itemize}
+		\item $z_n = z^n/n!$
+			\begin{itemize}
+				\item[] Converges to 0.
+			\end{itemize}
+		\item $z_n = n\sin(1/n) + ine^{-n}$
+			\begin{itemize}
+				\item[] Converges to 0.
+			\end{itemize}
+	\end{enumerate}
+
+\item Assuming the usual algebraic rules for real sequential limits, derive Theorem 1.5 from Lemma 1.4.
+\end{enumerate}
+\end{document}
