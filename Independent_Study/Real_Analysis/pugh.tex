@@ -1,48 +1,28 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage[english]{babel}
-\usepackage{multicol}
-\usepackage{graphicx}
-\usepackage{esint}
-\usepackage[utf8]{inputenc}
-\usepackage{color}
-\usepackage{soul}
-\usepackage{enumitem}
+\documentclass[11pt, a4paper, latinreim, shortsets]{notes}
 
-\newcommand{\problem}[2]{\noindent \\ \textbf{#1} #2 \\ \hspace{0.75em} \noindent \\}
-\newcommand{\pnum}[1]{\item[\textbf{#1}]}
-% our usual sets
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-% topology
 \newcommand{\topo}{\mathcal{T}}
-
-
 \newcommand{\cl}[1]{\overline{#1}}
-\title{Real Analysis Summer Work}
+
+\title{Real Analysis Summer Work \\
+\large Exercises from Pugh's \emph{Real Mathematical Analysis (2002)}}
+
 \author{Sameed Pervaiz}
 \date{\today}
 
 \begin{document}
 \maketitle
 
-\begin{itemize}
-	\pnum{2.1} Prove that $(0,1)$ is an open subset of $\R$ but not of $\R^2$.
+\setcounter{chapter}{1}
+\chapter{A Taste of Topology}
+\begin{enumerate}[label={\bfseries 2.\arabic*}]
+	\item Prove that $(0,1)$ is an open subset of $\R$ but not of $\R^2$.
 	\begin{proof}
 		$(0,1) \equiv B(0.5, 0.5)$ in $\R$, ergo an open set. However, in $\R^2$,
 		every open ball centered on some point in $(0,1)$ contains points with nonzero $y$
 		coordinate, and so the interval is not open.
 	\end{proof}
 
-	\pnum{2.2} For which intervals $[a,b]$ in $\R$ is the intersection $[a,b] \cap \Q$ a clopen subset
+	\item For which intervals $[a,b]$ in $\R$ is the intersection $[a,b] \cap \Q$ a clopen subset
 	of $\Q$?
 	\begin{proof}
 		Since $\Q$ is a metric subspace of $\R$, it follows that all the closed sets in $\Q$
@@ -51,7 +31,7 @@
 		Thus $[a,b]$ with $a,b$ irrational are those such intervals.
 	\end{proof}
 
-	\pnum{2.3} Prove directly from the definition of closed set that each single point is a closed
+	\item Prove directly from the definition of closed set that each single point is a closed
 	subset of a metric space. Why does this imply that a finite set of points is also a closed set?
 	\begin{proof}
 		Let $S=\{x\}$ be a singleton set. Then, only one sequence of points $(x_n)=(x,x,x,x,\cdots)$
@@ -60,7 +40,7 @@
 		points are closed.
 	\end{proof}
 
-	\pnum{2.4} Prove that $S$ clusters at $p$ if and only if, for each $r > 0$, there is a point
+	\item Prove that $S$ clusters at $p$ if and only if, for each $r > 0$, there is a point
 	$q \in M_{r}(p) \cap S$ such that $q \neq p$.
 	\begin{proof}
 	Suppose $S$ clusters at $p$. Then, every neighborhood of $p$ contains infinitely many points of $S$.
@@ -74,7 +54,7 @@
 	$p$, and so the set must be infinite.
 	\end{proof}
 
-	\pnum{2.5} Prove that a set $U \subset M$ is open if and only if none of its points are limits of
+	\item Prove that a set $U \subset M$ is open if and only if none of its points are limits of
 	its complement.
 	\begin{proof}
 	Suppose $U$ is open. Then, $U^c$ is closed and every one of its limits is contained in $U^c$.
@@ -85,7 +65,7 @@
 	$U$ is open.
 	\end{proof}
 
-	\pnum{2.6} If $S,T \subset M$, a metric space, and $S \subset T$, prove that
+	\item If $S,T \subset M$, a metric space, and $S \subset T$, prove that
 	\begin{enumerate}[label=\alph*)]
 		\item $\overline{S} \subset \overline{T}$
 	\begin{proof}
@@ -100,13 +80,13 @@
 	\end{proof}
 	\end{enumerate}
 
-	\pnum{2.7} Construct a set with exactly three cluster points.
+	\item Construct a set with exactly three cluster points.
 	\begin{proof}
 		The set $\{\frac{1}{n} : n \in \N\}$ has a single limit point of 0. If we include three shifted
 		copies of this set, then, it follows that there are three cluster points.
 	\end{proof}
 
-	\pnum{2.8} If $A \subset B \subset C$, $A$ is dense in $B$, $B$ is dense in $C$, prove that
+	\item If $A \subset B \subset C$, $A$ is dense in $B$, $B$ is dense in $C$, prove that
 	$A$ is dense in $C$.
 	\begin{proof}
 		$A$ dense in $B$ means $B \subset \cl{A}$, and $B$ dense in $C$ means $C \subset \cl{B}$.
@@ -114,11 +94,10 @@
 		and so $A$ is dense in $C$.
 	\end{proof}
 
-	\pnum{\hl{2.9}} Is the set of dyadic rationals (the denominators are powers of 2) dense in $\Q$?
+\item Is the set of dyadic rationals (the denominators are powers of 2) dense in $\Q$?
 	In $\R$? Does one answer imply the other? (Recall that $A$ is dense in $B$ iff $A \subset B$ and
 	$\cl{A} \supset B$.)
 
-	\pnum{2.10}
 	\begin{enumerate}[label=\alph*)]
 		\item Find a metric space in which the boundary of $M_rp$ is not equal to the sphere of radius
 		$r$ at $p$, $\{x\in M:d(x,p) = r\}$.
@@ -135,7 +114,7 @@
 		\end{itemize}
 	\end{enumerate}
 
-	\pnum{2.11} Let $\topo$ be the collection of open subsets of a metric space $M$, and $\mathcal{K}$
+	\item Let $\topo$ be the collection of open subsets of a metric space $M$, and $\mathcal{K}$
 	the collection of closed subsets. Show that there is a bijection from $\topo$ onto $\mathcal{K}$.
 	\begin{proof}
 		We approach the problem directly by constructing an explicit bijection $f$
@@ -147,7 +126,7 @@
 		$f(M-V) = M-(M-V) = V$. Thus $f$ is surjective as well, and so bijective, too.
 	\end{proof}
 
-	\pnum{2.12} Let $M$ be a metric space with the discrete metric, or more generally a
+	\item Let $M$ be a metric space with the discrete metric, or more generally a
 	homeomorph of $M$.
 
 	\begin{enumerate}[label=\alph*)]
@@ -176,7 +155,7 @@
 			\item[] Any eventually-constant sequence, as proved above.
 	\end{enumerate}
 
-	\pnum{2.13} Show that every subset of $\N$ is clopen. What does this tell you about every
+	\item Show that every subset of $\N$ is clopen. What does this tell you about every
 	function $f : \N \rightarrow M$, where $M$ is a metric space?
 
 	\begin{proof}
@@ -185,7 +164,7 @@
 		We can also note that every function on $\N$ is continuous.
 	\end{proof}
 
-	\pnum{\hl{2.14}} The \textbf{distance} from a point $p$ in a metric space $M$ to a non-empty subset
+	\item from a point $p$ in a metric space $M$ to a non-empty subset
 	$S \subset M$ is defined to be $\text{dist}(p,S) = \text{inf}\{d(p,s) : s \in S\}$
 
 	\begin{enumerate}[label=\alph*)]
@@ -219,14 +198,14 @@
 			\end{proof}
 	\end{enumerate}
 
-	\pnum{2.15} What is the set of points in $\R^3$ at distance $1/2$ from the unit circle in the plane?
+	\item What is the set of points in $\R^3$ at distance $1/2$ from the unit circle in the plane?
 	\begin{itemize}
 		\item[] It's a torus with inner radius 0, and outer radius 1.
 	\end{itemize}
 
-	\pnum{2.16} Show that $S \subset M$ is somewhere dense in $M$ iff int$(\overline{S}) \neq \varnothing$.
+	\item Show that $S \subset M$ is somewhere dense in $M$ iff int$(\overline{S}) \neq \varnothing$.
 	That is, $S$ is nowhere dense in $M$ if and only if its closure has empty interior.
-	
+
 	\begin{proof}
 		Suppose the closure of $S$ has empty interior. Since the interior of a set is the union of all
 		open subsets of the set, it follows that the empty set is the only open set contained in the closure
@@ -234,7 +213,7 @@
 		there exists no open non-empty sets $U$ such that $\overline{S \cap U} \supset U$.
 	\end{proof}
 
-	\pnum{\hl{2.17}} Assume that $f : M \to N$ is a function from one metric space to another which satisfies
+	\item Assume that $f : M \to N$ is a function from one metric space to another which satisfies
 	the following condition: if a sequence $(p_n)$ in $M$ converges then the sequence $(f(p_n))$ in $N$
 	converges. Prove that $f$ is continuous.
 
@@ -244,7 +223,7 @@
 		f(p)) < \epsilon$.
 	\end{proof}
 
-	\pnum{2.18} The simplest type of mapping from one metric space to another is an \textbf{isometry}.
+	\item The simplest type of mapping from one metric space to another is an \textbf{isometry}.
 	It is a bijection $f : M \to N$ that preserves distance in the sense that for all $p, q \in M$,
 	\begin{align}
 		d_{N}(fp, fq) = d_M (p,q)
@@ -273,10 +252,10 @@
 			\end{proof}
 	\end{enumerate}
 
-	\pnum{2.19} Prove that isometry is an equivalence relation: if $M$ is isometric to $N$, show that $N$
+	\item Prove that isometry is an equivalence relation: if $M$ is isometric to $N$, show that $N$
 	is isometric to $M$; show that any $M$ is isometric to itself (what mapping of $M$ to $M$ is an
 	isometry?); if $M$ is isometric to $N$ and $N$ is isometric to $P$, show that $M$ is isometric to $P$.
-	
+
 	\begin{proof}
 		Easy. We showed that the inverse of an isometry is an isometry, thus $N$ is isometric to $M$.
 		The identity map is trivially an isometry, so every $M$ is isometric to itself. Lastly, since
@@ -290,27 +269,27 @@
 		and so the composition of $f$ and $g$ is also an isometry.
 	\end{proof}
 
-	\pnum{\hl{2.20}} Is the perimeter of the square isometric to the circle? Homeomorphic?
+	\item Is the perimeter of the square isometric to the circle? Homeomorphic?
 
-	\pnum{\hl{2.21}} Which capital letters of the Roman alphabet are homeomorphic? Are any isometric?
+	\item Which capital letters of the Roman alphabet are homeomorphic? Are any isometric?
 	Explain.
 
-	\pnum{2.22} Is $\R$ homeomorphic to $\Q$? Explain.
+	\item Is $\R$ homeomorphic to $\Q$? Explain.
 
 	No; $\Q$ is disconnected, while $\R$ is connected, and so they cannot be homeomorphic.
 
-	\pnum{2.23} Is $\Q$ homeomorphic to $\N$? Explain.
+	\item Is $\Q$ homeomorphic to $\N$? Explain.
 
 	No, if a continuous bijection from $\Q$ to $\N$ existed, then every open set in $\N$ has an open
 	preimage, and every closed set in $\N$ has a closed preimage. But since every set in $\N$ is clopen,
 	the preimage of every set would have to be clopen. So take a singleton set in $\N$. Under a bijective
 	map to $\Q$, it has a singleton preimage. But no singleton in $\Q$ is open, and so no homeo can exist.
 
-	\pnum{\hl{2.24}} An ant walks on the floor, walls, and ceiling of a cubical room. What metric is
+	\item An ant walks on the floor, walls, and ceiling of a cubical room. What metric is
 	natural	for the ant's view of the world? What metric would a spider consider natural? If the ant wants
 	to walk	from a point $p$ to a point $q$, how could it determine the shortest path?
 
-	\pnum{2.25} Assume that $N$ is an open metric subspace of $M$ and that $U \subset N$.
+	\item Assume that $N$ is an open metric subspace of $M$ and that $U \subset N$.
 	\begin{enumerate}[label=\alph*)]
 		\item Prove that $U$ is open in $N$ if and only if it is open in $M$.
 			\begin{itemize}
@@ -349,7 +328,7 @@
 			\end{itemize}
 	\end{enumerate}
 
-	\pnum{2.26} Consider a sequence $(x_n)$ in the metric space $\R$.
+	\item Consider a sequence $(x_n)$ in the metric space $\R$.
 	\begin{enumerate}[label=\alph*)]
 		\item If $(x_n)$ converges in $\R$, prove that the sequence of absolute values $(|x_n|)$ converges
 			in $\R$.
@@ -362,7 +341,7 @@
 			value sequence converges to 1, but the regular sequence alternates between $-1$ and $1$.
 	\end{enumerate}
 
-	\pnum{2.27} Let $(A_n)$ be a nested decreasing sequence of non-empty closed sets in the metric space
+	\item Let $(A_n)$ be a nested decreasing sequence of non-empty closed sets in the metric space
 	$M$.
 	\begin{enumerate}[label=\alph*)]
 		\item If $M$ is complete and diam$(A_n) \to 0$ as $n \to \infty$, show that $\cap A_n$ is exactly
@@ -379,18 +358,17 @@
 		\item To what assertions do the sets $[n,\infty)$ provide counterexamples?
 	\end{enumerate}
 
-	\pnum{2.28} Prove that there is an embedding of the line as a closed usbset of the plane, and there is
+	\item Prove that there is an embedding of the line as a closed usbset of the plane, and there is
 	and embedding of the line as a bounded subset of the plane, but there is no embedding of the line as
 	a closed and bounded subset of the plane.
 
-	\pnum{2.29}
 	\begin{enumerate}[label=\alph*)]
 		\item Prove that every convergent sequence is bounded. That is, if $(p_n)$ converges in the metric
 			space $M$, prove that there is some neighborhood $M_r q$ containing the set $\{p_n : n \in \N\}$.
 		\item Is the same true for a Cauchy sequence in an incomplete metric space?
 	\end{enumerate}
 
-	\pnum{2.30} A sequence $(x_n)$ in $\R$ \textbf{increases} if $n < m$ implies $x_n \leq x_m$. It
+	\item A sequence $(x_n)$ in $\R$ \textbf{increases} if $n < m$ implies $x_n \leq x_m$. It
 	\textbf{strictly increases} if $n < m$ implies $x_n < x_m$. The same holds for decreasing. A sequence
 	is \textbf{monotone} if it increases or decreases.
 	\begin{enumerate}[label=\alph*)]
@@ -398,13 +376,13 @@
 		\item Prove that this monotone sequence condition is equivalent to the least upper bound proprerty.
 	\end{enumerate}
 
-	\pnum{2.31} Let $(x_n)$ be a sequence in $\R$.
+	\item Let $(x_n)$ be a sequence in $\R$.
 	\begin{enumerate}
 		\item[*a$)$] Prove that $(x_n)$ has a monotone subsequence.
 		\item[b$)$] How can you deduce that any bounded sequence in $\R$ has a convergent subsequence? 
 	\end{enumerate}
 
-	\pnum{2.32} Let $p_n$ be a sequence anf $f : \N \to \N$ a bijection. The sequence $(q_k)$ for
+	\item Let $p_n$ be a sequence anf $f : \N \to \N$ a bijection. The sequence $(q_k)$ for
 	$k \in \N$ with $q_k = p_{f k}$ is a \textbf{rearrangement} of $p_n$.
 	\begin{enumerate}[label=\alph*)]
 		\item Are limits of a sequence unaffected byu rearrangement?
@@ -412,7 +390,7 @@
 		\item A surjection?
 	\end{enumerate}
 
-	\pnum{2.33} If $f : A \to B$ and $g : C \to B$ such that $A \subset C$ and for each $a \in A,
+	\item If $f : A \to B$ and $g : C \to B$ such that $A \subset C$ and for each $a \in A,
 	f(a) = g(a)$ then $f$ extends to $g$. Assume that $f : S \to \R$ is a uniformly continuous function
 	defined on a subset $S$ of a metric space $M$.
 	\begin{enumerate}[label=\alph*)]
@@ -422,7 +400,7 @@
 		\item Prove the same things when $N$ is a complete metric space and $f : S \to N$.
 	\end{enumerate}
 
-	\pnum{2.34} A map $f : M \to N$ is open if for each open set $U \subset M$, the image set $f(U)$
+	\item A map $f : M \to N$ is open if for each open set $U \subset M$, the image set $f(U)$
 	is open in $N$
 	\begin{enumerate}[label=\alph*)]
 		\item Does open imply continuous?
@@ -433,7 +411,7 @@
 		\item What happens in $(e)$ if $\R$ is replaced by the unit circle $S$?
 	\end{enumerate}
 
-	\pnum{2.35} Fold a piece of paper in half.
+	\item Fold a piece of paper in half.
 	\begin{enumerate}[label=\alph*)]
 		\item Is this a continuous transformation of one rectangle into another?
 		\item Is it injective?
@@ -449,140 +427,12 @@
 		\item If $x$ is irrational what is the orbit?
 	\end{enumerate}
 
-	\pnum{2.36} Rotate the unit circle $C$ by a fixed angle $\alpha$, say $R : C \to C$. (In polar coor
+	\item Rotate the unit circle $C$ by a fixed angle $\alpha$, say $R : C \to C$. (In polar coor
 	dinates, the transformation $R$ sends $(1,\theta)$ to $(1,\theta + \alpha)$.)
 	\begin{enumerate}[label=\alph*)]
 		\item If $\alpha/\pi$ is rational, show that each orbit of $R$ is a finite set.
 		\item[*b$)$] If $\alpha / \pi$ is irrational, show that each orbit is infinite and has closure $=C$.
 	\end{enumerate}
-
-	\pnum{2.37}
-
-	\pnum{2.38}
-
-	\pnum{2.39}
-
-	\pnum{2.40}
-
-	\pnum{2.41}
-
-	\pnum{2.42}
-
-	\pnum{2.43}
-
-	\pnum{2.44}
-
-	\pnum{2.45}
-
-	\pnum{2.46}
-
-	\pnum{2.47}
-
-	\pnum{2.48}
-
-	\pnum{2.49}
-
-	\pnum{2.50}
-
-	\pnum{2.51}
-
-	\pnum{2.52}
-
-	\pnum{2.53}
-
-	\pnum{2.54}
-
-	\pnum{2.55}
-
-	\pnum{2.56}
-
-	\pnum{2.57}
-
-	\pnum{2.58}
-
-	\pnum{2.59}
-
-	\pnum{2.60}
-
-	\pnum{2.61}
-
-	\pnum{2.62}
-
-	\pnum{2.63}
-
-	\pnum{2.64}
-
-	\pnum{2.65}
-
-	\pnum{2.66}
-
-	\pnum{2.67}
-
-	\pnum{2.68}
-
-	\pnum{2.69}
-
-	\pnum{2.70}
-
-	\pnum{2.71}
-
-	\pnum{2.72}
-
-	\pnum{2.73}
-
-	\pnum{2.74}
-
-	\pnum{2.75}
-
-	\pnum{2.76}
-
-	\pnum{2.77}
-
-	\pnum{2.78}
-
-	\pnum{2.79}
-
-	\pnum{2.80}
-
-	\pnum{2.81}
-
-	\pnum{2.82}
-
-	\pnum{2.83}
-
-	\pnum{2.84}
-
-	\pnum{2.85}
-
-	\pnum{2.86}
-
-	\pnum{2.87}
-
-	\pnum{2.88}
-
-	\pnum{2.89}
-
-	\pnum{2.90}
-
-	\pnum{2.91}
-
-	\pnum{2.92}
-
-	\pnum{2.93}
-
-	\pnum{2.94}
-
-	\pnum{2.95}
-
-	\pnum{2.96}
-
-	\pnum{2.97}
-
-	\pnum{2.98}
-
-
-
-\end{itemize}
-
+\end{enumerate}
 
 \end{document}

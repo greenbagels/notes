@@ -1,33 +1,17 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage[english]{babel}
-\usepackage{multicol}
-\usepackage{graphicx}
-\usepackage{esint}
-\usepackage[utf8]{inputenc}
+\documentclass[11pt, a4paper, latinreim, shortsets]{notes}
 
-\newcommand{\problem}[2]{\noindent \\ \textbf{#1} #2 \\ \hspace{0.75em} \noindent \\}
-\newcommand{\pnum}[1]{\item[\textbf{#1}]}
 \newcommand{\Arg}{\,\text{Arg}\,}
 \newcommand{\Log}{\,\text{Log}\,}
 \newcommand{\Arctan}{\text{Arctan }}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\newcommand{\topo}{\mathcal{T}}
+\newcommand{\cl}[1]{\overline{#1}}
 
-\renewcommand{\Im}{\text{Im}\,}
-\renewcommand{\Re}{\text{Re}\,}
+\renewcommand*\thechapter{\Roman{chapter}}
 
-\title{Complex Analysis Summer Work}
+%TODO: Change chapter titles so they aren't gaudy and huge
+
+\title{Complex Analysis Summer Work \\
+\large Exercises from Palka's \emph{An Introduction to Complex Function Theory (1990)}}
 \author{Sameed Pervaiz}
 \date{\today}
 
@@ -35,8 +19,9 @@
 
 \maketitle
 
-\section*{Chapter I: The Complex Number System}
+\chapter{The Complex Number System}
 
+\section{The Algebra and Geometry of Complex Numbers}
 \begin{enumerate}[label={\bfseries I.4.\arabic*}]
 	\item If $z=1+2i$ and $w=3+4i$, express the following in the form $x+iy$:
 	\begin{enumerate}
@@ -96,8 +81,11 @@
 	\end{align}
 \end{enumerate}
 
-\section*{Chapter 2: Rudiments of Plane Topology}
+\section{Exponentials and Logarithms of Complex Numbers}
+\section{Functions of a Complex Variable}
 
+\chapter{Rudiments of Plane Topology}
+\section{Basic Notation and Terminology}
 \begin{enumerate}[label={\bfseries II.5.\arabic*}]
 	\item  Verify that $\Delta(z_0, r)$ is an open set and that $\overline{\Delta}(z_0,r)$ is a
 	closed set.
@@ -275,6 +263,61 @@
 \item A complex sequence $z_n$ is defined recursively by $z_1 = 0, z_2 = 1, z_n = (z_{n-1}+z_{n-2})/2$
 for $n \geq 3$. Show that $z_n = (2i/3)[1-(-1/2)^{n-1}]$ for $n > 2$. Conclude that $z_n$ converges and
 determine $\lim_{n\to\infty} z_n$.
+
+\section{Continuity and Limits of Functions}
+\section{Connected Sets}
+\section{Compact Sets}
+
+\chapter{Analytic Functions}
+\section{Complex Derivatives}
+\section{The Cauchy-Riemann Equations}
+\section{Exponential and Trigonometric Functions}
+\section{Branches of Inverse Functions}
+\section{Differentiability in the Real Sense}
+
+\chapter{Complex Integration}
+\section{Paths in the Complex Plane}
+\section{Integrals Along Paths}
+\section{Rectifiable Paths}
+
+\chapter{Cauchy's Theorem and its Consequences}
+\section{The Local Cauchy Theorem}
+\section{Winding Numbers and the Local Cauchy Integral Formula}
+\section{Consequences of the Local Cauchy Integral Formula}
+\section{More About Logarithm and Power Functions}
+\section{The Global Cauchy Theorems}
+\section{Simply Connected Domains}
+\section{Homotopy and Winding Numbers}
+
+\chapter{Harmonic Functions}
+\section{Harmonic Functions}
+\section{The Mean Value Property}
+\section{The Dirichlet Problem for a Disk}
+
+\chapter{Sequences and Series of Analytic Functions}
+\section{Sequences of Functions}
+\section{Infinite Series}
+\section{Sequences and Series of Analytic Functions}
+\section{Normal Families}
+
+\chapter{Isolated Singularities of Analytic Functions}
+\section{Zeros of Analytic Functions}
+\section{Isolated Singularities}
+\section{The Residue Theorem and its Consequences}
+\section{Function Theory on the Extended Plane}
+
+
+\chapter{Conformal Mapping}
+\section{Conformal Mappings}
+\section{M\"obius Transformations}
+\section{Riemann's Mapping Theorem}
+\section{The Carath\'eodory-Osgood Theorem}
+\section{Conformal Mappings onto Polygons}
+
+\chapter{Constructing Analytic Functions}
+\section{The Theorem of Mittag-Leffler}
+\section{The Theorem of Weierstrass}
+\section{Analytic Continuation}
 
 \end{enumerate}
 \end{document}
